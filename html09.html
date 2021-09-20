@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- method="POST"는 주소창에 기록이 안남는 방식 -->
+    <!-- method="GET"는 주소창에 기록이 남는방식 생략하면 GET으로 설정됨 -->
+    <form action="next.html" method="GET">
+        <table border="1" width="300">
+            <tr>
+                <td>ID</td>
+                <td><input type="text" name="id" placeholder="아이디를 입력하세요"></td>
+            </tr>
+            <tr>
+                <td>PW</td>
+                <td><input type="text" name="pwd" placeholder="비밀번호를 입력하세요"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <!-- <form> 태그 내에 입력된 데이터를 서버로 전달해줌 -->
+
+                    <input type="submit" value="로그인">
+
+                    <!-- 입력한 값을 reset해줌 -->
+                    <input type="reset" value="다시입력">
+
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
