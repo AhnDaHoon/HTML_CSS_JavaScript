@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #aaa, #bbb{
+            color: red;
+        }
+
+        /* 클래스는 .으로 가르키면 된다. */
+        .blueP {
+            color: blue;
+        }
+
+        /* 상품 2,3,5만 글자를 핑크색으로 변경 */
+        .pinkColor {
+            color: pink;
+        }
+
+
+    </style>
+</head>
+<body>
+        <!-- h1{type 선택자} -->
+        <h1>type 선택자</h1>
+
+        <!-- id는 현재 페이지에서 유일한 식별자로 사용되어야 한다. -->
+
+        <!-- p{HTML의 모든요소는 선택자로 사용가능}*4 -->
+        <!-- id의 값은 unique한 값이여야 한다. -->
+        <!-- class는 중복된 값을 넣을때 사용한다. -->
+        <p id = "aaa">HTML의 모든요소는 선택자로 사용가능</p>
+        <p id = "bbb">HTML의 모든요소는 선택자로 사용가능</p>
+        <p class = "blueP">HTML의 모든요소는 선택자로 사용가능</p>
+        <p class = "blueP">HTML의 모든요소는 선택자로 사용가능</p>
+
+        <ul>
+            <li>상품1</li>
+            <li class="pinkColor">상품2</li>
+            <li>상품3</li>
+            <li class="pinkColor">상품4</li>
+            <li class="pinkColor">상품5</li>
+        </ul>
+</body>
+</html>

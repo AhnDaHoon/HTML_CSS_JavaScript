@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css11</title>
+    <style>
+        /* 각 div 영역의 너비를 230px, 높이 250px 배경은 오렌지색 */
+        
+
+
+
+        div {
+            width: 230px;
+            height: 250px;
+            background: orange;
+        }
+
+        /* id가 div1인 영역은 1px 검정 실선 */
+        
+        
+        div#div1 {
+            border: 1px solid black;
+            padding: 20px; /* padding은 컨텐츠와 테두리사이 */
+            /* margin 바깥영역 공간 */
+            /* margin-left: 500px; */
+
+            /* 좌우 가운데 정렬 */
+            /* margin: 0px auto; */
+
+
+            /* 상하 좌우 */
+            /* 12시 방향부터 시계방향으로 지정 */
+            margin: 10px 20px 30px 40px;
+        }
+
+        /* id가 div2인 영역은 배경이 핑크 너비,높이50px 3px점선 파란색  */
+        div#div2 {
+            width: 50px;
+            height: 50px;
+            border: 3px dotted blue;
+            background: pink;
+            margin: 0px auto;
+            padding: 40px 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- div#div1+div#div2{BOX2} -->
+    <div id="div1">
+        ID: <input type="text" name="id"><br>
+        PW: <input type="text" name="pwd"><br>
+    </div>
+    <div id="div2">BOX2</div>
+</body>
+</html> 
