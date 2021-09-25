@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #coupang{
+            width: 200px;
+            display: block;
+            margin:auto;
+        }
+
+        input{
+            margin: 15px 0px 0px 250px;
+            width: 45%;
+            height: 35px;
+            text-indent: 36px;
+        }
+
+        #pwd:hover{
+
+        }
+
+        input:hover{
+
+        }
+
+        b{
+            margin: 0px 0px 0px 250px;
+        }
+
+        input[type=checkbox]{
+            background-image:url(../images/ch.png);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            outline: none;
+            /* 체크박스 위치 조절 */
+            vertical-align:-4px;
+        }
+        
+        input:focus{
+            border: none;
+            border-bottom: 3px solid red;
+        }
+
+        ul{
+            margin: 15px 0px 0px 250px;
+            padding: 18px 16px;
+            border: 1px solid #ccc;
+            width: 45%;
+            overflow: hidden;
+            display: block;
+
+            border-top: 1px solid #f1f4f6;
+            color: #111;
+        }
+
+        .box{
+            margin-left: 0px;
+        }
+
+        span{
+            cursor: pointer;
+
+        }
+
+        #boxButton{
+            display: table-cell;
+            width: 16px;
+            height: 16px;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iIzIxMkIzNiIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNS4xODEgMi4yMWMuMjMzLS4yNDguNjEtLjI3OC44NzgtLjA4MmwuMDY1LjA1MyA1LjY2NiA1LjMzNGMuMjYuMjQ0LjI3OC42NDUuMDU2LjkxMWwtLjA1Ni4wNi01LjY2NiA1LjMzM2MtLjI2OS4yNTItLjY5LjI0LS45NDMtLjAyOS0uMjMzLS4yNDctLjI0LS42MjYtLjAyOS0uODgxbC4wNTgtLjA2MUwxMC4zNiA4IDUuMjEgMy4xNTJjLS4yNDgtLjIzMy0uMjc4LS42MS0uMDgyLS44NzhsLjA1My0uMDY0eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTcxMTUgLTgxNikgdHJhbnNsYXRlKDcxMTUgODE2KSIvPgogICAgICAgICAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwIiBkPSJNMCAxNkwxNiAxNiAxNiAwIDAgMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MTE1IC04MTYpIHRyYW5zbGF0ZSg3MTE1IDgxNikiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==);
+            cursor: pointer;
+            float: right;
+            border: 0;
+            background-color: #fff;
+            font-size: 0;
+            flex-shrink: 0;
+            vertical-align:-20px;
+            position: relative;
+            bottom: -13px;
+        }
+
+        #email{
+            background: white;
+            background-image: url(../images/email.png);
+            background-size: 35px;
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+        }
+        #pwd{
+            background: white;
+            background-image: url(../images/pwd.png);
+            background-size: 35px;
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+        }
+        #repwd{
+            background: white;
+            background-image: url(../images/repwd.png);
+            background-size: 35px;
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+        }
+        #name{
+            background: white;
+            background-image: url(../images/name.png);
+            background-size: 35px;
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+        }
+        #phone{
+            background: white;
+            background-image: url(../images/phone.png);
+            background-size: 35px;
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+        }
+
+        #create{
+            margin: 15px 0px 0px 250px;
+            width: 48.5%;
+            height: 20%;
+            background-color: #0074e9;
+            color: #fff;    
+            padding: 16px 17px;
+            font-size: 17px;
+            line-height: 20px;
+            display: block;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <form action="">
+        <div>
+            <img id="coupang" src="https://static.coupangcdn.com/image/static/login/logo-coupang.x2.20201201.png" alt="">
+            <b>회원정보를 입력해주세요</b>
+            <input type="text" name="email" value="아이디(이메일)" id="email" onfocus="this.value='';">
+            <!-- <input type="text" name="pwd" value="비밀번호" id="pwd"> -->
+            <input type="text" name="pwd" value="비밀번호" id="pwd" onfocus="this.value='';">
+            <input type="text" name="pwd" value="비밀번호 확인" id="repwd" onfocus="this.value='';">
+            <input type="text" name="name" value="이름" id="name" onfocus="this.value='';">
+            <input type="text" name="phoneNumber" value="휴대폰 번호" id="phone" onfocus="this.value='';">
+            <hr style="width: 46%; margin: 15px 0px 20px 250px;">
+            <b style="font-size: 13px;">쿠팡 서비스약관에 동의해주세요</b><br>
+            <input style="margin: 15px 0px 0px 250px;" type="checkbox" name="all" id="">
+            <span style="font-weight: bold;">[선택] 모두 동의합니다.</span>
+            <ul>
+                <div>
+                    <input style="margin-top: 0px;" class="box" type="checkbox" name="" id="">
+                    <span>[필수] 만 14세 이상입니다</span>
+                </div>
+                <div>
+                    <input class="box" type="checkbox" name="" id="">
+                    <span>[필수] 쿠팡 이용약관 동의</span> 
+                    <button id="boxButton">></button>
+                </div>
+                <div>
+                    <input class="box" type="checkbox" name="" id="">
+                    <span>[필수] 전자금융거래 이용약관 동의</span>
+                    <button id="boxButton">></button>
+                </div>
+                <div>
+                    <input class="box" type="checkbox" name="" id="">
+                    <span>[필수] 개인정보 수집 및 이용 동의</span>
+                    <button id="boxButton">></button>
+                </div>
+                <div>
+                    <input class="box" type="checkbox" name="" id="">
+                    <span>[필수] 개인정보 제공 동의</span>
+                    <button id="boxButton">></button>
+                </div>
+            </ul>
+
+            <button id="create">동의하고 가입하기</button><br>
+            <span style="margin: 0px 0px 0px 350px; font-size: 15px;">©Coupang Corp. All rights reserved.</span>
+        </div>
+    </form>
+
+
+
+</body>
+</html>

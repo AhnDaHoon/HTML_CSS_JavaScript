@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+        div{
+            width: 100px;
+            height: 100px;
+        }
+
+        #box{
+            background: red;
+        }
+
+        #box2{
+            background: blue;
+        }
+
+        span{
+            /* span을 div처럼 만들수 있다. */
+            background: yellow;
+            width: 150px;
+            height: 150px;
+            display: block;
+        }
+
+        /* span에 마우스를 올려 놓으면 배경을 초록색으로 바꾸기 */
+        span:hover{
+            background: green;
+        }
+
+        span:active{
+            background: blue;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- div>div#box{푸른하늘} -->
+    <div>
+        <div id="box">푸른하늘</div>
+    </div>
+
+    <div>
+        <div id="box2">은하수</div>
+    </div>
+
+    <span>span은 inline요소</span>
+    
+</body>
+</html>
