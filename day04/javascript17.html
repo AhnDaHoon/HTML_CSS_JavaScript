@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function moveAddrs(){
+            var name = document.getElementById("name");
+            var addrs = document.getElementById("addrs");
+            var name2 = document.getElementById("name2");
+            var dest = document.getElementById("dest");
+            name2.value = name.value;
+            dest.value = addrs.value;
+        
+        }
+
+
+    </script>
+</head>
+<body>
+    <div>
+        성명: <input type="text" name="" id="name" value="DH">
+        주소: <input type="text" name="" id="addrs" value="서울 종로구 율곡동">
+    </div>
+    
+    <div>
+        <input type="button" value="배송지동일" onclick="moveAddrs();">
+    </div>
+    
+    <div>
+        받는사람: <input type="text" name="" id="name2" value=""><br>
+        배송지: <input type="text" name="" id="dest" value="">
+    </div>
+
+
+
+
+
+
+
+
+</body>
+</html>

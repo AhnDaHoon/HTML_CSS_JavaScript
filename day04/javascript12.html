@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function prt(){
+            var txt = document.getElementById("dan");  
+            var dan = txt.value;
+            for(var i = 1; i <= 9; i++){
+                console.log(dan+" * " + i + " = "+ dan*i);
+            }
+
+        }
+
+        function prt2(){
+            var txt = document.getElementById("dan");  
+            var dan = txt.value;
+            for(var i = 1; i <= 9; i++){
+                document.write("<h2>" + dan+" * " + i + " = "+ dan*i + "</h2>");
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="dan">
+
+    <!-- 1. 텍스트에 5를 입력하고 버튼을 누르면 5단출력 (콘솔)-->
+    <input type="button" value="구구단출력" onclick="prt();">
+    
+
+    <!-- 1. 텍스트에 5를 입력하고 버튼을 누르면 5단출력 (브라우저 <h2>)-->
+    <input type="button" value="구구단출력2" onclick="prt2();">
+</body>
+</html>

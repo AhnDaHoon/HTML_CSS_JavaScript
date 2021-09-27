@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function prt() {
+            // id가 txt인 엘리먼트 객체 가져오기
+            var txt = document.getElementById("txt");
+            // 객체의 속성을 출력
+            console.dir(txt);
+            // 콘솔에 출력
+            var data = txt.value;
+            console.log(data);
+            
+            data = "aa";
+            txt.value = "bb";
+
+        }
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt">
+    <input type="button" value="출력" onclick="prt();">
+    
+</body>
+</html>

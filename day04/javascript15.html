@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function cal() {
+            var txt1 = document.getElementById("txt1");
+            var oper = document.getElementById("oper");
+            var txt3 = document.getElementById("txt3");
+            var result = document.getElementById("result");
+            var sum = txt1.value + oper.value + txt3.value;
+            result.value = eval(sum);
+            console.log(sum);
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1">
+    <input type="text" name="" id="oper" size="3">
+    <input type="text" name="" id="txt3">
+    <input type="button" value="=" onclick="cal();">
+    <input type="text" name="" id="result">
+</body>
+</html>

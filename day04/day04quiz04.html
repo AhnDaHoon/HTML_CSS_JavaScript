@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function plus() {
+            var txt1 = document.getElementById("txt1").value;
+            var txt2 = document.getElementById("txt2").value;
+
+            var result = eval(parseInt(txt1) + parseInt(txt2));
+            console.log(result);
+        }
+    
+
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1"> +
+    <input type="text" name="" id="txt2">
+    <input type="button" value="=" onclick="plus();">
+    
+</body>
+</html>

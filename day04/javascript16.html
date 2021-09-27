@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        table, td {
+            border: 1px solid red;
+            border-collapse: collapse;
+        }
+        
+        table{
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        input{
+
+            width: 200px;
+            height: 50px;
+            margin: 10px 10px 10px 10px;
+        }
+
+        #result{
+            width: 850px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+    </style>
+
+    <script>
+        function inputData(v) {
+            var result = document.getElementById("result");
+            result.value += v;        
+        }
+    
+    function cal() {
+        var result = document.getElementById("result");
+        result.value = eval(result.value);
+        }
+
+    </script>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" name="" id="result"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" id="" onclick="inputData(7);"></td>
+            <td><input type="button" value="8" id="" onclick="inputData(8);"></td>
+            <td><input type="button" value="9" id="" onclick="inputData(9);"></td>
+            <td><input type="button" value="+" id="" onclick="inputData('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" id="" onclick="inputData(4);"></td>
+            <td><input type="button" value="5" id="" onclick="inputData(5);"></td>
+            <td><input type="button" value="6" id="" onclick="inputData(6);"></td>
+            <td><input type="button" value="-" id="" onclick="inputData('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" id="" onclick="inputData(1);"></td>
+            <td><input type="button" value="2" id="" onclick="inputData(2);"></td>
+            <td><input type="button" value="3" id="" onclick="inputData(3);"></td>
+            <td><input type="button" value="*" id="" onclick="inputData('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" id="" onclick="inputData(0);"></td>
+            <td><input type="button" value="00" id="" onclick="inputData('00');"></td>
+            <td><input type="button" value="=" id=""  onclick="cal()"></td>
+            <td><input type="button" value="/" id="" onclick="inputData('/')"></td>
+        </tr>
+    </table>
+    
+</body>
+</html>

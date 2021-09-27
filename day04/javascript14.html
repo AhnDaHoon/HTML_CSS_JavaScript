@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function minus() {
+            var txt1 = document.getElementById("txt1");
+            var txt2 = document.getElementById("txt2");
+            var result = document.getElementById("result");
+            result.value = parseInt(txt1.value) - parseInt(txt2.value);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1">+
+    <input type="text" name="" id="txt2">
+    <input type="button" value="=" onclick="minus();">
+    <input type="text" name="" id="result">
+    
+</body>
+</html>

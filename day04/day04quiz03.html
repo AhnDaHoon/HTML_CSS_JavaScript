@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function print3Dan(){
+            var txt = document.getElementById("Dan")
+            var dan = txt.value;
+            for(var i = 1; i <= 9; i++) {
+                console.log(dan + " * " + i + " = " + dan*i);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="Dan">
+    <input type="button" value="구구단출력" onclick="print3Dan();">
+    
+</body>
+</html>
