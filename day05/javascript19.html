@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var a;
+
+        a = 10; // 값을 할당하는 순간 자료형이 결정된다. : 동적타이핑 언어
+
+        // 출력형식 3가지
+        // document.write(a);
+        // alert(a);
+        // console.log(a);
+
+        // 자바스크립트에서 배열 사용 가능
+        var b = new Array(3);
+
+        
+        b[0] = 1;
+        b[1] = 2;
+        b[2] = 3;
+        
+        // b배열 객체
+        console.log(b);
+        console.dir(b);
+        
+        // 반복문을 통해서 출력 가능
+        for (var i = 0; i < b.length; i++){
+            b[i] = i;
+            console.log("b["+i+"]: "+ b[i]);
+        }
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

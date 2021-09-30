@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //버튼을 클릭하면 div영역에 Hello 메세지를 출력
+        // 1. 함수만들기
+        function showDiv() {
+            // 2. 간단한 메세지 출력
+            console.log("생성");
+            // 3. id: box1인 엘리먼트 객체 가져오기
+            // 4. 출력
+
+            var box1 = document.getElementById("box1");
+            console.log(box1);
+            box1.innerText="<h2>Hello</h2>"; // 텍스트 그대로를 다 출력
+            // box1.innerHTML="<h2>Hello</h2>"; // 태그를 적용시키고 출력
+
+        }
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div><input type="button" value="출력" onclick="showDiv()"></div>
+</body>
+</html>

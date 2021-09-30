@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            width: 400px;
+            height: 400px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <img src="" alt="" id="poster">
+    <script>
+        var rnd = Math.random();
+        console.log(rnd);
+        console.log(rnd*10);
+
+        // 1부터 10사이의 정수 구하기
+        // Math.floor: 정수출력
+        no = Math.floor(rnd*10)+1;
+
+        var path = "../images/movie_image"+no+".jpg"
+        console.log(path);
+
+        // id가 poster인 엘리먼트 객체를 가져오기
+        var poster = document.getElementById("poster");
+        console.dir(poster);
+
+        // 이 객체의 src 속성의 값을 ../images/movie_image숫자.jpg 지정
+        poster.src=path;
+
+
+
+    </script>
+    
+</body>
+</html>

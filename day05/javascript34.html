@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+        }
+
+        #btn{
+            background: red;
+            color: green;
+        }
+    </style>
+    <script>
+        function prt(){
+            console.log("생성")
+
+            // box1에 간단한 메세지를 h3태그로 출력
+
+            var box1 = document.getElementById("box1");
+            box1.innerHTML="<h3>생성</h3>"
+            // box1.innerHtml="<h3>생성</h3>"
+            // 만약 HTML을 대문자가아닌 Html 이런식으로 작성했다면
+            // console.dir(box1)에 보면 innerHTML이 아닌 inner Html로 
+            // 새로운게 만들어져서 태그가 적용이 안된다.
+            
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="btn" onclick="prt()" onmouseover="prt()">
+        버튼
+
+    </div>
+</body>
+</html>

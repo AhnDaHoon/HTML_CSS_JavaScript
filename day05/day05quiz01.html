@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #back{
+            margin-top: 10%;
+            width: 100%;
+        }
+        
+        ul{
+            list-style:none;
+            width: 20%;
+            margin-top: -22%;
+            margin-left: 75%;
+        }
+
+        li:hover{
+            border: 3px solid blue;
+            cursor: pointer;
+        }
+        
+        li{
+            width: 180px;
+            height: 60px;
+            
+        }
+
+        .slide1{
+            cursor: pointer;
+        }
+
+        
+
+    </style>
+
+
+</head>
+<body>
+    <div id="container">
+        <a href="https://www.coupang.com/np/goldbox?from=home_C1&traid=home_C1&trcid=6742710996"><img src="https://image8.coupangcdn.com/image/ccm/banner/57bc6b465bfc56956eecca5d2639e16b.png" alt="특가혜택" id="back" class="slide1"></a>
+        <a href="https://pages.coupang.com/p/42102?from=home_C1&traid=home_C1&trcid=11086191"><img src="https://static.coupangcdn.com/wa/cmg_paperboy/image/1632902584816/210930_%EB%B0%95%EC%8B%B1%EB%8D%B0%EC%9D%B4_SMD-13598_PC.jpg" alt="특가혜택" id="back" class="slide1"></a>
+        <a href="https://www.coupang.com/np/categories/393760?from=home_C1&traid=home_C1&trcid=9743811017"><img src="https://image8.coupangcdn.com/image/ccm/banner/96169f4edeaa9dec845a443b57d2aaca.jpg" alt="특가혜택" id="back" class="slide1"></a>
+        <a href="https://pages.coupang.com/f/s3115?from=home_C1&traid=home_C1&trcid=11085863"><img src="https://static.coupangcdn.com/ha/cmg_paperboy/image/1632816902477/1001_PC_C1.jpg" alt="특가혜택" id="back" class="slide1"></a>
+        <a href="https://pages.coupang.com/f/s7955?from=home_C1&traid=home_C1&trcid=11085861"><img src="https://static.coupangcdn.com/za/cmg_paperboy/image/1632740753617/C1-PC1%2813%29.jpg" alt="특가혜택" id="back" class="slide1"></a>
+        <a href="https://www.coupang.com/np/promotion/99125?from=home_C1&traid=home_C1&trcid=11086193"><img src="https://static.coupangcdn.com/ra/cmg_paperboy/image/1632902681453/%5B%EC%88%98%EC%A0%95%5D210930_%EA%B0%80%EC%A0%84%EA%B0%A4%EB%9F%AD%EC%8B%9C_SMD-13596_PC.jpg" alt="특가혜택" id="back" class="slide1"></a>
+        <ul>
+            <li><a href="https://www.coupang.com/np/goldbox?from=home_C1&traid=home_C1&trcid=6742710996"><img src="https://image6.coupangcdn.com/image/ccm/banner/5e382d0631403d4f6d422d14c809952f.png" alt="" onmouseover="boders()" id="banner1"></li></a>
+            <li><a href="https://pages.coupang.com/p/42102?from=home_C1&traid=home_C1&trcid=11086191"><img src="https://static.coupangcdn.com/ba/cmg_paperboy/image/1632902591061/210930_%EB%B0%95%EC%8B%B1%EB%8D%B0%EC%9D%B4_SMD-13598_Item.jpg" alt="" onmouseover="boders()" id="banner2"></li></a>
+            <li><a href="https://www.coupang.com/np/categories/393760?from=home_C1&traid=home_C1&trcid=9743811017"><img src="https://image9.coupangcdn.com/image/ccm/banner/bff7710d3a44efebd4ef99fcf107a3f2.jpg" alt="" onmouseover="boders()" id="banner3"></li></a>
+            <li><a href="https://pages.coupang.com/f/s3115?from=home_C1&traid=home_C1&trcid=11085863"><img src="https://static.coupangcdn.com/va/cmg_paperboy/image/1632816909199/WPC_C1%285%29.jpg" alt="" onmouseover="boders()" id="banner4"></li></a>
+            <li><a href="https://pages.coupang.com/f/s7955?from=home_C1&traid=home_C1&trcid=11085861"><img src="https://static.coupangcdn.com/ra/cmg_paperboy/image/1632740759303/C1-PC2%2813%29.jpg" alt="" onmouseover="boders()" id="banner5"></li></a>
+            <li><a href="https://www.coupang.com/np/promotion/99125?from=home_C1&traid=home_C1&trcid=11086193"><img src="https://static.coupangcdn.com/ba/cmg_paperboy/image/1632902689367/210930_%EA%B0%80%EC%A0%84%EA%B0%A4%EB%9F%AD%EC%8B%9C_SMD-13596_Item.jpg" alt="" onmouseover="boders()" id="banner6"></li></a>
+        </ul>
+    </div>
+
+    <script>
+    var index = 0;   //이미지에 접근하는 인덱스
+    window.onload = function(){
+        slideShow();
+    }
+    
+    function slideShow() {
+    var i;
+    var x = document.getElementsByClassName("slide1");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";   
+        
+    }
+    index++;
+    if (index > x.length) {
+        index = 1;  
+    }   
+    x[index-1].style.display = "block";  
+    setTimeout(slideShow, 3000);   
+
+    }   
+
+    </script>
+
+    
+    
+</body>
+</html>

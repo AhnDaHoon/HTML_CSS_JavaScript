@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function changeImage(){
+            var id = document.getElementById("photo")
+            id.src="../images/after.PNG";
+
+        }
+
+
+        function changeImage2(){
+            var id = document.getElementById("photo");
+            id.src="../images/before.PNG";
+        }
+    </script>
+</head>
+<body>
+    <!-- 마우스가 안으로 들어갈때 onmouseover -->
+    <!-- 마우스가 빠져나갈때 onmouseout -->
+    <img src="../images/before.PNG" alt="" id="photo" onmouseover="changeImage()" onmouseout="changeImage2()">
+</body>
+</html>

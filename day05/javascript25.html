@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // viewResult() 함수 만들기
+        
+        function viewResult(){
+            var m1 = document.getElementById("m1");
+            var m2 = document.getElementById("m2");
+            var m3 = document.getElementById("m3");
+            var m4 = document.getElementById("m4");
+            var m5 = document.getElementById("m5");
+
+            console.dir(m1);
+
+            if(m1.checked) {
+                console.log("007 노 타임 투 다이");
+            }else if(m2.checked){
+                console.log("보이스");
+            }else if(m3.checked){
+                console.log("기적");
+            }else if(m4.checked){
+                console.log("치와 텐 링즈의 전설");
+            }else if(m5.checked){
+                console.log("모가디슈")
+            };
+
+            console.log("-----------------------------------------");
+
+            console.log(document.frm.movie[0].checked);
+            if(document.frm.movie[0].checked){
+                console.log("007");
+            }
+        }
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+    <h1>추천영화</h1>
+
+    <form action="" name="frm">
+        <input type="radio" name="movie" id="m1">007 노 타임 투 다이
+        <input type="radio" name="movie" id="m2">보이스
+        <input type="radio" name="movie" id="m3">기적
+        <input type="radio" name="movie" id="m4">치와 텐 링즈의 전설
+        <input type="radio" name="movie" id="m5">모가디슈<br>
+        <input type="button" value="추천" onclick="viewResult()">
+    </form> 
+
+
+    
+</body>
+</html>

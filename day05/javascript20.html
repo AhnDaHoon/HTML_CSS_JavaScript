@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function getTime(){
+            console.log("getTime 함수 호출");
+            
+            // 날짜 시간 data 객체
+            var now = new Date();
+            console.log(now);
+            console.dir(now);
+
+            var year = now.getYear();
+            console.log(year); // 1900 + 121
+
+            var year2 = now.getFullYear();
+            console.log(year2);
+
+            var month = now.getMonth()+1;
+            console.log(month);
+
+            var day = now.getDate();
+
+            var hours = now.getHours();
+
+            var minutes = now.getMinutes();
+
+            var seconds = now.getSeconds();
+            // 오늘의 날짜를 출력
+
+            var time = year2+"년 "+month+"월 "+day+"일 "+hours+": "+ minutes+": "+seconds;
+            console.log(time);
+
+            var t = document.getElementById("time");
+            t.value = time;
+
+        }
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="time">
+    <input type="button" value="지금시간출력하기" onclick="getTime();">
+    
+</body>
+</html>

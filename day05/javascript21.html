@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 문자열 객체
+
+        var str = "abcdefgh";
+        console.log(str);
+
+        console.dir(str);
+
+        // 2번부터 3글자출력 2,3,4
+        console.log(str.substr(2,3));
+
+        // 특정문자의 위치를 알아오기
+        console.log(str.indexOf("a"));
+
+        // 중첩가능
+        var email = "dadad@naver.com";
+
+        // id만 추출
+        console.log(email.substr(0,email.indexOf("@")));
+
+        console.log("--------------------------------------------")
+
+        // 친구들 목록
+        var friendList = "aaa,bbb,ccc,ddd,eee,fff";
+        //split("기호")를 통해서 문자열을 배열 형태로 리턴 할 수 있다.
+        var fList = friendList.split(",");
+
+        // 배열에서 요소를 한개씩 꺼내서 출력
+        for(var i = 0; i < fList.length; i++){
+            console.log(fList[i]);
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

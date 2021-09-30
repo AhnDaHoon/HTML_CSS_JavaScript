@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+    <script>
+        function bigChance(){
+            console.log("생성");
+            
+            // 6칸짜리 배열 선언
+            var lotto = new Array(6);
+            // 랜덤하게 번호를 6개 생성
+            // 배열에 담기
+            for(var i = 0; i < lotto.length; i++){
+                lotto[i] = Math.floor(Math.random()*45 + 1 );
+                // 중복 되었다면 다시뽑기
+                for(var j = 0; j<i; j++){
+                    if(lotto[j] == lotto[i]) {
+                        i--;
+                    }
+                }
+            }
+                 // img 객체 6개 가져오기
+            var image1 = document.getElementById("id1");
+            var image2 = document.getElementById("id2");
+            var image3 = document.getElementById("id3");
+            var image4 = document.getElementById("id4");
+            var image5 = document.getElementById("id5");
+            var image6 = document.getElementById("id6");
+            
+            // 이미지객체의 속성 src="경로"
+            image1.src = "../images/ball"+lotto[0]+".png";
+            image2.src = "../images/ball"+lotto[1]+".png";
+            image3.src = "../images/ball"+lotto[2]+".png";
+            image4.src = "../images/ball"+lotto[3]+".png";
+            image5.src = "../images/ball"+lotto[4]+".png";
+            image6.src = "../images/ball"+lotto[5]+".png";   
+        }
+
+    </script>
+</head>
+<body>
+    <img src="../images/q.jpg" alt="물음표" id="id1">
+    <img src="../images/q.jpg" alt="물음표" id="id2">
+    <img src="../images/q.jpg" alt="물음표" id="id3">
+    <img src="../images/q.jpg" alt="물음표" id="id4">
+    <img src="../images/q.jpg" alt="물음표" id="id5">
+    <img src="../images/q.jpg" alt="물음표" id="id6"><br>
+    <input type="button" value="대박" onclick="bigChance()">
+</body>
+</html>

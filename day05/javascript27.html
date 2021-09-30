@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //1. checkForm() 함수 만들기
+        function checkForm(x) {
+            //2. 간단한 메세지 출력해보기
+            console.log("a")
+            console.dir(document);
+            //3. 사용자가 입력한 입력값을 콘솔에 입력하기
+            var id = x.form[0].value;
+            var pw = x.form[1].value;
+            var repw = x.form[2].value;
+            var email = x.form[3].value;
+            console.log(id);
+            console.log(pw);
+            console.log(repw);
+            console.log(email);
+
+            // return을 만나면 밑에코드들이 실행이 안된다.
+            // 아이디를 입력안했거나 비밀번호가 안맞을 경우 회원가입 성공
+            // 홈페이지로 가면 안되기 때문에
+            if(id==''){
+                alert("아이디를 입력하세요");
+                x.form[0].focus();
+                return;
+            }else if(pw==''){
+                alert("비밀번호를 입력하세요");
+                x.form[1].focus();
+                return;
+            }else if(repw==''){
+                alert("비밀번호확인을 입력하세요");
+                x.form[2].focus();
+                return;
+            }else if(email==''){
+                alert("비밀번호를 입력하세요");
+                x.form[3].focus();
+                return;
+            }else if(pw.length <= 7){
+                alert("패스워드의 길이는 8자 이상이여야 합니다.")
+                x.form[2].focus();
+                return;
+            }else if(pw!=repw){
+                alert("비밀번호가 안맞습니다. 다시 입력하세요");
+                x.form[2].focus();
+                return;
+            }else if(email.indexOf('@')== -1){
+                alert("에메일형식이 아닙니다.")
+                return;
+            }
+            
+
+
+            // next.html로 이 값을 전송
+            x.form.action = "next.html";
+            // method
+            x.form.method = "get";
+            // 제출
+            x.form.submit();
+
+        }
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <form action="next.html" name="frm" method="GET">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="userid" id="id"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="uswerpw" id=""></td>
+            </tr>
+            <tr>
+                <td>비밀번호확인</td>
+                <td><input type="password" name="uswerrepw" id=""></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="text" name="email" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="전송1" onclick="checkForm(this)">
+                    <input type="submit" value="전송2">
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+    </form>
+    
+</body>
+</html>
