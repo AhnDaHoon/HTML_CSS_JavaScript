@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 객체: 속성 + 함수
+        // java: int[] msg = new int[];
+        var msg = [];
+
+        // java: Person p = new Person();
+        // var p = new Object();
+        var person = {};
+
+        // 속성을 추가
+        person.name = "홍길동";
+        person.age = 20;
+
+        console.log(person);
+        
+        //person2: name, age, gender, tel
+
+        var person2 = {};
+        person2.name = "안다훈";
+        person2.age = 26;
+        person2.gender = "남자";
+        person2.tel = "010-xxxx-xxxx";
+        console.log(person2);
+
+        // JSON(JavaScropt Object Notation)
+
+        var person3 = {
+            name: "DH",
+            age: 20,
+            gender: "남",
+            tel: "010-xxxx-xxxx"
+        };
+        console.log(person3);
+
+        // 성인 판별 함수
+        function isAdult(obj){
+            var result;
+            if(obj.age >= 19) {
+                result = "성인";
+            }else{
+                result = "미성년자";
+            }
+            console.log(obj.name + "씨는 "+ result +"입니다.")
+        }
+        isAdult(person3);
+
+        // 뽀로로 객체
+        var person4 = {
+            name: "뽀로로",
+            age: 7,
+            job: "백수" 
+        }
+
+        isAdult(person4);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        #show {
+            width: 800px;
+            height: 450px;
+            background: white;
+        }
+
+        #box1 {
+            display: inline-block;
+        }
+
+        #box2 {
+            display: inline-block;
+        }
+
+        #box3 {
+            display: inline-block;
+        }
+
+        #box4 {
+            display: inline-block;
+        }
+
+        #box5 {
+            display: inline-block;
+        }
+
+        #box6 {
+            display: inline-block;
+        }
+
+        div:hover {
+            background: white;
+            border: 1px solid skyblue;
+        }
+    </style>
+    <script>
+        var imgList = [
+            '../images/img1.jpg',
+            '../images/img2.jpg',
+            '../images/img3.jpg',
+            '../images/img4.jpg',
+            '../images/img5.png',
+            '../images/img6.jpg',
+        ];
+
+
+           // 3초 1번씩 다른 이미지로 교체
+        var idx = 0;
+        function changeImage2() {
+            var img = document.getElementById("img");
+            console.log("testtest2");
+            img.src = imgList[++idx];
+            if(idx == imgList.length-1) {
+                idx = -1;
+            }
+            window.setTimeout(changeImage2, 3000);
+
+        }
+        
+
+
+
+        //  1.changeImage()
+        function changeImage(x) {
+            console.log(x);
+            //  2.메세지 출력
+            console.log("test");
+            //  3.  id : img인 엘리먼트 객체 가져오기
+            var img = document.getElementById("img");
+            //  4.  대상 이미지로 교체
+            img.src = imgList[2];
+            console.log(x.id.substr(3, 1));
+
+            img.src = imgList[x.id.substr(3, 1)]-1;
+
+            // if (x.id == "box1") {
+            //     img.src = imgList[0];
+            // } else if (x.id == "box2") {
+            //     img.src = imgList[1];
+            // } else if (x.id == "box3") {
+            //     img.src = imgList[2];
+            // } else if (x.id == "box4") {
+            //     img.src = imgList[3];
+            // } else if (x.id == "box5") {
+            //     img.src = imgList[4];
+            // } else if (x.id == "box6") {
+            //     img.src = imgList[5];
+            // }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div id="show">
+        <img src="../images/img1.jpg" id="img" alt="">
+
+    </div>
+
+    <div id="box1" onmouseover="changeImage(this);">
+        김치볶음밥
+    </div>
+    <div id="box2" onmouseover="changeImage(this);">
+        패션
+    </div>
+    <div id="box3" onmouseover="changeImage(this);">
+        아이폰
+    </div>
+    <div id="box4" onmouseover="changeImage(this);">
+        아이크림
+    </div>
+    <div id="box5" onmouseover="changeImage(this);">
+        생수
+    </div>
+    <div id="box6" onmouseover="changeImage(this);">
+        차음료
+    </div>
+
+    <script>
+        //changeImage2() 1회 실행
+        changeImage2();
+    </script>
+
+</body>
+
+</html>

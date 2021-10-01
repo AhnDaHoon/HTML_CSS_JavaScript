@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #myCanvas{
+            background: #aaaaaa;
+        }
+
+    </style>
+
+    <script>
+        var rabbit = new Image();
+        rabbit.src="../images/rabbit1.png"
+        
+        var bgImg = new Image();
+        bgImg.src="../images/bg.jpg";
+        
+        var rabbit2 = new Image();
+        rabbit2.src="../images/rabbit2.png"
+
+        // 그리기 변수
+        var ctx;
+        // 카운터 변수
+        var counter = 0;
+        window.onload=function(){
+            var canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            window.setInterval(drawScreen, 10);
+            
+            // 1회 반복: window.setTime(함수명, 지연시간);
+            // 계속 반복: window.setInterval(함수명, 지연시간);
+        }
+
+        // 그림 그리기 함수
+        function drawScreen(){
+            counter++;
+            // console.log(counter);
+            ctx.drawImage(bgImg, 0, 0, 800, 600);
+            if(counter %2 == 1) {
+                ctx.drawImage(rabbit, 100, 100, 100, 100);
+            }else{
+                ctx.drawImage(rabbit2, 100, 100, 100, 100);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="800", height="600"></canvas>
+</body>
+</html>

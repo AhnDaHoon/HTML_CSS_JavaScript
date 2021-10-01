@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var msg = [];
+        // 1. prt()
+        function prt(){
+            // 2. 메세지 출력
+            console.log("prt");
+            // 3. txt1엘리먼트 객체
+            var txt1 = document.getElementById("txt1");
+            // 4. value: 콘솔에 출력
+            console.log(txt1.value);
+            // 배열에담기
+            msg.push(txt1.value);
+            // 5. id가 ulEle 객체인 엘리먼트 객체
+            var ul = document.getElementById("ulEle");
+            // 저장할 메세지 만들기
+            // <li> ~~~ </li>
+            var data = '';
+            for(var i = 0; i < msg.length; i++) {
+                data += "<li>"+msg[i]+"</li>";
+            }
+
+            ul.innerHTML = data;
+            // 6. value 추가
+            
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>점심메뉴</h1>
+    <input type="text" name="" id="txt1">
+    <input type="button" value="입력" onclick="prt();">
+
+    <!-- div>ul#ulEle>li{메뉴} -->
+    <div>
+        <ul id="ulEle">
+            <li>메뉴</li>
+        </ul>
+    </div>
+    
+</body>
+</html>

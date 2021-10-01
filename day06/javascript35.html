@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 1. saveData()
+        // 3. 배열을 선언
+        // 전역변수로 선언해야 변수가 안사라짐
+        var msg = [];
+        function saveData(){
+        // 2. 간단한 메세지를 호출
+            console.log("생성");
+        // 4. id가 txt1인 엘리먼트 객체를 가져오기
+            var txt1 = document.getElementById("txt1");
+        // 5. 이 엘리먼트의 값을 가져와서 배열에 담기
+            msg.push(txt1.value);
+        // 6. 배열을 콘솔에 출력
+            console.log(msg);
+            txt1.value='';
+        }
+
+        // 1. printData()
+        function printData(){
+            // 2. 메세지 출력
+            // console.log("printData");
+            // 3. id: txt2인 엘리먼트 객체
+            var txt2 = document.getElementById("txt2");
+            // 4. 배열 요소를 반목문을 사용해서 꺼내오기
+            var data = ''
+            for(var i = 0; i < msg.length; i++) {
+                data += "<h2>"+msg[i]+"</h2>";  
+            }
+            txt2.innerHTML=data;
+        }
+        // 5. innerHTML 배열 요소 출력
+
+
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="txt1">
+    <input type="button" value="저장" onclick="saveData();">
+    <input type="button" value="출력" onclick="printData();">
+
+    <div id="txt2">
+        <h1>Text</h1>
+    </div>
+</body>
+</html>
