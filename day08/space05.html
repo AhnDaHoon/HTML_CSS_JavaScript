@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #myCanvas{
+            background: #aaaaaa;
+        }
+    </style>
+    <script>
+        var bg1 = new Image();
+        bg1.src = "../images/space.jpg";
+
+        var bg2 = new Image();
+        bg2.src = "../images/space.jpg";
+
+        // 배경 y좌표 변수
+        var bgY1 = 0;
+        var bgY2 = -800;
+
+        // 내 비행기 이미지
+        var ship1 = new Image();
+        var ship2 = new Image();
+        var ship3 = new Image();
+        var ship4 = new Image();
+        ship1.src = "../images/gunship4.png";
+        ship2.src = "../images/gunship5.png";
+        ship3.src = "../images/gunship6.png";
+        ship4.src = "../images/gunship7.png";
+        
+        // 적 비행기 이미지
+        var enemyShip1 = new Image();
+        var enemyShip2 = new Image();
+        var enemyShip3 = new Image();
+        var enemyShip4 = new Image();
+        enemyShip1.src = "../images/gunship0.png";
+        enemyShip2.src = "../images/gunship1.png";
+        enemyShip3.src = "../images/gunship2.png";
+        enemyShip4.src = "../images/gunship3.png";
+
+        // 미사일 이미지
+        var missile = new Image();
+        missile.src = "../images/missile1.png"
+
+        var ctx;
+
+        // 카운터 변수
+        var counter = 0;
+
+        // 내 비행기 좌표
+        var shipX = 250;
+        var shipY = 700;
+
+        // 미사일 좌표
+        var missileX = -250;
+        var missileY = -250;
+
+        
+        window.onload=function(){
+            var canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+
+            // 그리기 함수 호출
+            // 0.5초에 한번씩 그리기
+            window.setInterval(drawScreen,10);
+
+            // 마우스를 움직일때 마다 함수를 호출
+            // 내 비행기 이동 함수
+            canvas.onmousemove=moveSnip;
+
+            // 마우스를 클릭하면 함수를 호출
+            // 미사일 발사
+            canvas.onmousedown=fireMissile;
+
+        }
+
+        function drawScreen(){
+            counter++;
+            // console.log(counter);
+
+            // 배경
+            bgY1+=3;
+            bgY2+=3;
+            
+            missileY-=3;
+
+            if(bgY1 >= 800) {
+                bgY1 = -800;
+            }
+            if(bgY2 >= 800) {
+                bgY2 = -800;
+            }
+            
+            ctx.drawImage(bg1, 0, bgY1, 600, 800);
+            ctx.drawImage(bg2, 0, bgY2, 600, 800);
+
+            
+            // 내 비행기
+            if(counter % 4 == 0){
+                ctx.drawImage(ship1, shipX, shipY, 50, 50);
+            }else if(counter % 4 == 1){
+                ctx.drawImage(ship2, shipX, shipY, 50, 50);
+            }else if(counter % 4 == 2){
+                ctx.drawImage(ship3, shipX, shipY, 50, 50);
+            }else if(counter % 4 == 3){
+                ctx.drawImage(ship4, shipX, shipY, 50, 50);
+            }
+            
+            // 적 비행기
+            if(counter % 4 == 0){
+                ctx.drawImage(enemyShip1, 250, 50, 50, 50);
+            }else if(counter % 4 == 1){
+                ctx.drawImage(enemyShip2, 250, 50, 50, 50);
+            }else if(counter % 4 == 2){
+                ctx.drawImage(enemyShip3, 250, 50, 50, 50);
+            }else if(counter % 4 == 3){
+                ctx.drawImage(enemyShip4, 250, 50, 50, 50);
+            }
+            
+            // 미사일
+            ctx.drawImage(missile, missileX, missileY, 5, 10);
+
+
+            
+        }
+
+        function moveSnip(e){
+            // console.dir(e);
+            shipX = e.pageX-25;
+            shipY = e.pageY-25;
+        }
+
+        function fireMissile(e){
+            missileX = e.pageX;
+            missileY = e.pageY;
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="800"></canvas>
+
+</body>
+</html>
