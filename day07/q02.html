@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #myCanvas{
+            background: #aaaaaa;
+        }
+
+    </style>
+
+    <script>
+        // 배경 x좌표 변수 선언
+        var bgX1 = 0;
+        var bgX2 = 800;
+
+        //토끼의 좌표
+        var runX = 100;
+        var runY = 100;
+
+        var coinX1 = 700;
+        var coinX2 = 1400;
+        
+        var run1 = new Image();
+        run1.src="../images/run1.png"
+        
+        var run2 = new Image();
+        run2.src="../images/run2.png"
+
+        var run3 = new Image();
+        run3.src="../images/run3.png"
+
+        var bgImg1 = new Image();
+        bgImg1.src="../images/bg1.jpg";
+
+        var bgImg2 = new Image();
+        bgImg2.src="../images/bg2.jpg";
+
+        var silverCoin1 = new Image();
+        silverCoin1.src="../images/silver.png"
+        var silverCoin2 = new Image();
+        silverCoin2.src="../images/silver.png"
+        
+        var goldCoin1 = new Image();
+        goldCoin1.src="../images/gold.png"
+        var goldCoin2 = new Image();
+        goldCoin2.src="../images/gold.png"
+        
+        // 배경음악 객체
+        var bgMusic = new Audio("../sounds/backsound.mp3");
+
+
+        // 그리기 변수
+        var ctx;
+        // 카운터 변수
+        var counter = 0;
+        window.onload=function(){
+            var canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            window.setInterval(drawScreen, 50);
+            
+            // 1회 반복: window.setTime(함수명, 지연시간);
+            // 계속 반복: window.setInterval(함수명, 지연시간);
+        }
+
+        // 그림 그리기 함수
+        function drawScreen(){
+            counter++;
+            bgX1--;
+            bgX2--;
+            coinX1--;
+            coinX2--;
+            
+            // 이미지 두장을 번갈아 가면서 위치를 조정
+            if(bgX1 <= -800) {
+                bgX1 = 800;
+                bgX2 = 0;
+                
+            }
+            
+            if(bgX2 <= -800) {
+                bgX2 = 800;
+                bgX1 = 0;
+            }
+
+            if(coinX1 == 0){
+                coinX1 = 1500;
+            }
+
+            if(coinX2 == 0){
+                coinX2 = 1500;
+            }
+
+
+
+            // console.log(counter);
+            ctx.drawImage(bgImg1, bgX1, 0, 800, 600);
+            ctx.drawImage(bgImg2, bgX2, 0, 800, 600);
+
+            // 코인
+            ctx.drawImage(silverCoin1, coinX1, 100, 100, 100);
+            ctx.drawImage(goldCoin1, coinX1, 300, 100, 100);
+            ctx.drawImage(silverCoin2, coinX2, 100, 100, 100);
+            ctx.drawImage(goldCoin2, coinX2, 300, 100, 100);
+
+            if(counter %3 == 1) {
+                ctx.drawImage(run1, runX, runY, 100, 100);
+            }else if(counter %3 == 2){
+                ctx.drawImage(run2, runX, runY, 100, 100);
+            }else {
+                ctx.drawImage(run3, runX, runY, 100, 100);
+            }
+        }
+
+        function moveRabbit(x) {
+            console.log(x);
+            if(x == 8) {
+                runY -= 3;
+            }else if(x == 6) {
+                runY += 3
+            }else if(x == 4) {
+                runX -= 3
+            }else if(x == 2) {
+                runX += 3
+            }
+        }
+
+        function startMusic(){
+            console.log("음악시작~~~");
+            // 시작점으로 되돌리기
+            bgMusic.currentTime=0;
+            bgMusic.play();
+        }
+        
+        function stopMusic(){
+            console.log("배경음악 중지~~~");
+            bgMusic.pause();
+        }
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="800", height="600"></canvas>
+    <br>
+    <input type="button" value="배경음악ON" onclick="startMusic()">
+    <input type="button" value="배경음악OFF" onclick="stopMusic()"><br><br>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="↑" onclick="moveRabbit(8);"><br>
+    <input type="button" value="←" onclick="moveRabbit(4);">
+    <input type="button" value="↓" onclick="moveRabbit(6);">
+    <input type="button" value="→" onclick="moveRabbit(2);">
+
+</body>
+</html>
+        <!-- // 그림 그리기 함수
+        // function drawScreen(){
+        //     counter++;
+        //     // console.log(counter);
+        //     ctx.drawImage(bgImg, 0, 0, 800, 600);
+        //     if(counter %3 == 1) {
+        //         ctx.drawImage(run1, 100, 100, 100, 100);
+        //     }else if(counter %3 == 2){
+        //         ctx.drawImage(run2, 100, 100, 100, 100);
+        //     }else {
+        //         ctx.drawImage(run3, 100, 100, 100, 100);
+        //     }
+        // } -->
+

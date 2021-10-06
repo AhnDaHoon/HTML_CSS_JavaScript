@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #game{
+            width: 640px;
+            height: 480px;
+            margin: 0 auto;
+            position: relative;
+            top: 100px;
+        }
+        #startButton{
+            width: 80px;
+            height: 50px;
+            position: absolute;
+            right: 180px;
+            bottom: 90px;
+            opacity: 0;
+        }
+    </style>
+    <script>
+        // 배경 좌표
+        var bgX1 = 0;
+        var bgX2 = 640;
+
+        // 캐릭터의 x,y 좌표
+        var characterX = 100;
+        var characterY = 265;
+
+
+        // 점프 관련 변수
+        var jumpUD = 0;
+        var jumpY = 0;
+
+        // 스코어 변수
+        var score = 0;
+
+        //황금동전 변수
+        var goldX = 640;
+        var goldY = 300;
+
+        var start = new Image();
+        start.src = "../images/start.png";
+       
+        var bgImg1 = new Image();
+        bgImg1.src = "../images/bg1.jpg";
+
+        var bgImg2 = new Image();
+        bgImg2.src = "../images/bg2.jpg";
+
+        var gold = new Image();
+        gold.src = "../images/gold.png";
+
+        var run1 = new Image();
+        var run2 = new Image();
+        var run3 = new Image();
+
+        run1.src = "../images/run1.png";
+        run2.src = "../images/run2.png";
+        run3.src = "../images/run3.png";
+
+
+
+        var counter = 0;
+        var ctx;
+
+        window.onload = function(){
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            ctx.drawImage(start, 0,0, 640, 480);
+
+            var body = document.body;
+
+            // 키보드를 눌렀을때
+            body.onkeydown = moveCat;
+        }
+
+        function gameStart(){
+            console.log("게임시작");
+            var startButton = document.getElementById("startButton");
+            startButton.style.display = "none";
+            
+            window.setInterval(drawGame, 1);
+        }
+
+        function drawGame(){
+            bgX1-=2;
+            bgX2-=2;
+
+            // 황금동전 위치값
+            goldX-=2;
+
+            if(jumpUD == 1){
+                jumpY += 2;
+                if(jumpY >= 150){
+                    jumpUD = 2;
+                }
+            }else if(jumpUD == 2){
+                jumpY -= 2;
+                if(jumpY <= 0){
+                    jumpUD = 0;
+                    jumpY = 0;
+                }
+            }
+
+            if(bgX1 % 10 == 0)
+                counter++;
+
+            if(bgX1 <= -640){
+                bgX1 = 640;
+                bgX2 = 0;
+            }
+            if(bgX2 <= -640){
+                bgX2 = 640;
+                bgX1 = 0;
+            }
+
+            ctx.drawImage(bgImg1, bgX1, 0, 640, 480);
+            ctx.drawImage(bgImg2, bgX2, 0, 640, 480);
+    
+            //동전 그리기
+            ctx.drawImage(gold, goldX, goldY, 50, 50);
+
+            if(counter % 6 <= 2){
+                ctx.drawImage(run1, characterX, characterY - jumpY, 100, 110);
+            }else if(counter % 6 <= 4){
+                ctx.drawImage(run2, characterX, characterY - jumpY, 100, 110);
+            }else{
+                ctx.drawImage(run3, characterX, characterY - jumpY, 100, 110);
+            }
+
+            ctx.font = "50px 고딕";
+            ctx.fillStyle = "red";
+            ctx.fillText("Score : " + score,390, 50);
+        }
+
+        function moveCat(e){
+            if(e.keyCode == 37){
+                characterX -= 3;
+            }else if(e.keyCode == 38){
+                characterY -= 3;
+            }else if(e.keyCode == 39){
+                characterX += 3;
+            }else if(e.keyCode == 40){
+                characterY += 3;
+            }else if(e.keyCode == 32){
+                if (jumpUD == 0) 
+                    jumpUD = 1;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="game">
+        <canvas id="myCanvas" width="640px" height="480px"></canvas>
+        <input type="button" value="" id="startButton" onclick="gameStart();">
+    </div>         
+</body>
+</html>

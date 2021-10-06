@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #myCanvas{
+            background: #aaaaaa;  
+        }
+    </style>
+    <script>
+        // 배경의 x좌표 
+        var bgX1 = 0; 
+        var bgX2 = 800;
+
+        var catX = 100;
+        var catY = 400;
+
+        // 점프 변수
+        var jump1 = 0;
+        var jump2 = 0;
+        var switch1 = true;
+
+
+        // 배경 이미지 
+        var bg1 = new Image(); 
+        bg1.src = "../images/bg1.jpg"; 
+        var bg2 = new Image(); 
+        bg2.src = "../images/bg2.jpg"; 
+
+        // 동전이미지
+        var gold1 = new Image(); 
+        gold1.src = "../images/gold.png"; 
+
+
+        // 동전 좌표
+        var coinX = 500;
+        var coinY = 450;
+
+        // 점수
+        score = 0;
+
+
+        // 고양이 이미지 
+        var cat1 = new Image(); 
+        cat1.src= "../images/run1.png"; 
+
+        var cat2 = new Image(); 
+        cat2.src= "../images/run2.png"; 
+
+        var cat3 = new Image(); 
+        cat3.src= "../images/run3.png"; 
+
+        var reboundY = 0 ; 
+
+        // 카운터 변수 
+        var counter = 0;
+        var ctx ; 
+        window.onload=function(){
+            var canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d"); 
+            // drawScreen();
+
+            var body = document.body;
+
+            body.onkeydown=moveCat;
+
+            window.setInterval(drawScreen, 50);
+        }
+        function moveCat(e){
+            if(e.keyCode==37)  catX -= 2;
+            else if(e.keyCode == 38) catY -=2;
+            else if(e.keyCode == 39) catX +=2;
+            else if(e.keyCode == 40) catY +=2;
+            else if(e.keyCode == 32) {
+                jump1 = 100;
+                jump2 = 100;
+            }
+        }
+
+
+        function drawScreen(){
+            bgX1-=2;
+            bgX2-=2;
+
+            coinX-=2;
+
+            // 참이면 -
+            // 거짓이면 +
+            
+            if(reboundY >= 5){
+                reboundY -= 5;
+            }
+
+            if(bgX1<= -800){
+                bgX1= 800;
+                bgX2=0;
+            }
+
+            if(bgX2<= -800){
+                bgX2= 800;
+                bgX1=0;
+            }
+
+            if(jump1 >= 3 && switch1 == true) {
+                jump1-=3;
+                catY -=3;
+                catX +=3;
+                if(jump1 < 3) {
+                    switch1 = false;
+                }
+            }
+
+            if(jump2 >= 3 && switch1 == false) {
+                jump2 -=3;
+                catY +=3;
+                catX +=3;
+                if(jump2 < 3) {
+                    switch1 = true;
+                }
+            }
+
+            var dis = pythagoras(catX, catY, coinX, coinY);
+            console.log(dis);
+
+            if(coinX <= 0) {
+                coinX = Math.floor(Math.random()*700);;
+            }
+
+            if(dis <= 58) {
+                score+=100;
+                coinX = Math.floor(Math.random()*700);
+            }
+
+            counter++;
+            //console.log(counter);
+            ctx.drawImage(bg1 , bgX1, 0, 800, 600); 
+            ctx.drawImage(bg2 , bgX2, 0, 800, 600); 
+
+            
+            // 골드 그리기 
+            ctx.drawImage(gold1, coinX, coinY, 50, 50);
+            
+            // 점수판 그리기
+            ctx.fillStyle = "red";
+            ctx.font="35px 맑은고딕";
+            ctx.fillText("SCORE:" + score, 300, 50);
+
+            if( counter%3 == 0 )  ctx.drawImage(cat1 , catX, catY, 100, 100); 
+            else if(counter%3 == 1) ctx.drawImage(cat2 , catX, catY, 100, 100); 
+            else if(counter%3 == 2) ctx.drawImage(cat3 , catX, catY, 100, 100); 
+        }
+
+        function pythagoras(x1, y1, x2, y2){
+            return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+        }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="800px" height="600px"></canvas>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            /* 크로스 브라우징 */
+            /* 브라우저에 상관없이 동일한 화면을 제공하고자 할때 사용 */
+            margin: 0;
+            padding: 0;
+        }
+        #myCanvas{
+            background: #aaaaaa;
+        }
+
+    </style>
+
+    <script>
+        // 배경 x좌표 변수 선언
+        var bgX1 = 0;
+        var bgX2 = 800;
+
+
+        //토끼의 좌표
+        var rabbitX = 100;
+        var rabbitY = 100;
+
+        // 조준경의 좌표
+        var snipeX = 100;
+        var snipeY = 100;
+
+        // 구멍이미지 좌표
+        var holeX = 100;
+        var holeY = 100;
+
+        var rabbit = new Image();
+        rabbit.src="../images/rabbit1.png"
+        
+        var rabbit2 = new Image();
+        rabbit2.src="../images/rabbit2.png"
+
+        var bgImg1 = new Image();
+        bgImg1.src="../images/bg.jpg";
+
+        var bgImg2 = new Image();
+        bgImg2.src="../images/bg.jpg";
+
+        var hole = new Image();
+        hole.src = "../images/hole.png";
+
+        var snipe = new Image();
+        snipe.src = "../images/snipe.png";        
+
+        // 배경음악 객체
+        var bgMusic = new Audio("../sounds/backsound.mp3");
+
+        // 총소리 객체
+        var fireSound = new Audio("../sounds/fire.wav")
+
+
+        // 그리기 변수
+        var ctx;
+        // 카운터 변수
+        var counter = 0;
+        window.onload=function(){
+            var canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+
+            var body = document.body;
+            // console.dir(body);
+
+            // body에서 키보드가 눌리면 moveRabbit()함수를 호출
+            // onkeydown: 키보드가 눌리면
+            // onkeyup: 키보드를 떼면
+            body.onkeydown = moveRabbit;
+            
+            // moveRabbit()함수를 실행하고 결과를 담음
+            // body.onkeydown = moveRabbit();
+
+            // 캔버스 범위에서만 조준경의 조작이 가능하도록함
+            // canvas.onmousemove=함수;
+            canvas.onmousemove=moveSnipe;
+
+            // 총발사 이벤트
+            canvas.onmousedown=fire;
+
+
+            window.setInterval(drawScreen, 50);
+            // 1회 반복: window.setTime(함수명, 지연시간);
+            // 계속 반복: window.setInterval(함수명, 지연시간);
+        }
+
+        // 그림 그리기 함수
+        function drawScreen(){
+            counter++;
+            bgX1--;
+            bgX2--;
+            
+            
+
+            // 이미지 두장을 번갈아 가면서 위치를 조정
+            if(bgX1 <= -800) {
+                bgX1 = 800;
+                bgX2 = 0;
+            }
+            
+            if(bgX2 <= -800) {
+                bgX2 = 800;
+                bgX1 = 0;
+            }
+
+            // console.log(counter);
+            ctx.drawImage(bgImg1, bgX1, 0, 800, 600);
+            ctx.drawImage(bgImg2, bgX2, 0, 800, 600);
+            if(counter %2 == 1) {
+                ctx.drawImage(rabbit, rabbitX, rabbitY, 100, 100);
+            }else{
+                ctx.drawImage(rabbit2, rabbitX, rabbitY, 100, 100);
+            }
+            // 구멍 이미지 그리기
+            ctx.drawImage(hole, holeX, holeY, 10, 10);
+
+            // 조준경 그리기 
+            ctx.drawImage(snipe, snipeX-50, snipeY-50, 100, 100);
+
+        }
+
+        function moveRabbit(e) {
+            console.log(e);
+            // console.log(e.keyCode);
+            if(e.keyCode == 37) rabbitX -= 3;
+            else if(e.keyCode == 38) rabbitY -= 3
+            else if(e.keyCode == 39) rabbitX += 3
+            else if(e.keyCode == 40) rabbitY += 3
+            
+
+            // if(x == 8) {
+            //     rabbitY -= 3;
+            // }else if(x == 6) {
+            //     rabbitY += 3
+            // }else if(x == 4) {
+            //     rabbitX -= 3
+            // }else if(x == 2) {
+            //     rabbitX += 3
+            // }
+        }
+
+        function startMusic(){
+            console.log("음악시작~~~");
+            // 시작점으로 되돌리기
+            bgMusic.currentTime=0;
+            bgMusic.play();
+        }
+        
+        function stopMusic(){
+            console.log("배경음악 중지~~~");
+            bgMusic.pause();
+        }
+
+        function moveSnipe(e){
+            // console.dir(e);
+            snipeX = e.pageX;
+            snipeY = e.pageY;
+        }
+
+        function fire(e){
+            console.log("총소리 발사");
+            console.dir(e);
+            
+            // 총소리 play
+            fireSound.currentTime=0;
+            fireSound.volume=0.01;
+            fireSound.play();
+
+            // 구멍이미지 좌표 ==> 이벤트 좌표
+            holeX = e.pageX;
+            holeY = e.pageY;
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="800", height="600"></canvas>
+    <br>
+    <input type="button" value="배경음악ON" onclick="startMusic()">
+    <input type="button" value="배경음악OFF" onclick="stopMusic()"><br><br>
+    
+
+</body>
+</html>
