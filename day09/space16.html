@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #myCanvas{
+            background: #aaaaaa;
+        }
+
+        input{
+            background: gold;
+        }
+
+    </style>
+    <!-- javascript minify -->
+    <script src="../js/game.js"></script>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="800"></canvas>
+    <!-- 배경음악 on off 버튼 -->
+    <!-- 미사일 발사시 발사음악: fire2.wav -->
+    <br>
+    <input type="button" value="배경음악ON" onclick="startBGMOn();">
+    <input type="button" value="배경음악OFF" onclick="stopBGMOff();">
+
+
+
+</body>
+</html>

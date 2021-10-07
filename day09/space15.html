@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #myCanvas{
+            background: #aaaaaa;
+        }
+
+        input{
+            background: gold;
+        }
+
+    </style>
+    <script>
+        var bg1 = new Image();
+        bg1.src = "../images/space.jpg";
+
+        var bg2 = new Image();
+        bg2.src = "../images/space.jpg";
+
+        // 배경 y좌표 변수
+        var bgY1 = 0;
+        var bgY2 = -800;
+
+        // 내 비행기 이미지
+        var ship1 = new Image();
+        var ship2 = new Image();
+        var ship3 = new Image();
+        var ship4 = new Image();
+        ship1.src = "../images/gunship4.png";
+        ship2.src = "../images/gunship5.png";
+        ship3.src = "../images/gunship6.png";
+        ship4.src = "../images/gunship7.png";
+        
+        // 적 비행기 이미지
+        var enemyShip1 = new Image();
+        var enemyShip2 = new Image();
+        var enemyShip3 = new Image();
+        var enemyShip4 = new Image();
+        enemyShip1.src = "../images/gunship0.png";
+        enemyShip2.src = "../images/gunship1.png";
+        enemyShip3.src = "../images/gunship2.png";
+        enemyShip4.src = "../images/gunship3.png";
+
+        // 좀 더 쎈 적 비행기 이미지
+        var enemyShip11 = new Image();
+        var enemyShip12 = new Image();
+        var enemyShip13 = new Image();
+        var enemyShip14 = new Image();
+        enemyShip11.src = "../images/gunship11.png";
+        enemyShip12.src = "../images/gunship12.png";
+        enemyShip13.src = "../images/gunship13.png";
+        enemyShip14.src = "../images/gunship14.png";
+
+        // 파랑 비행기
+        var enemyShip21 = new Image();
+        var enemyShip22 = new Image();
+        var enemyShip23 = new Image();
+        var enemyShip24 = new Image();
+        enemyShip21.src = "../images/gunship21.png";
+        enemyShip22.src = "../images/gunship22.png";
+        enemyShip23.src = "../images/gunship23.png";
+        enemyShip24.src = "../images/gunship24.png";
+        
+
+
+        // 미사일 이미지
+        var missile = new Image();
+        missile.src = "../images/missile1.png"
+
+        // 미사일 발사 음악
+        var fireSound = new Audio("../sounds/fire2.wav");
+
+        // 브금 변수
+        var bgm = new Audio("../sounds/Burning_Body.mp3");
+        
+
+        var ctx;
+
+        // 카운터 변수
+        var counter = 0;
+
+        // 내 비행기 좌표
+        var shipX = 250;
+        var shipY = 700;
+
+        // 적 비행기 좌표
+        // 랜덤위치로 생성
+        var enemyShipX = Math.floor(Math.random()*550);
+        var enemyShipY = 50;
+
+        // 미사일 좌표
+        var missileX = -250;
+        var missileY = -250;
+
+        // 미사일 배열
+        var missileArray = [];
+
+        // 적비행기 배열
+        var enemyArray = [];
+
+        // 점수
+        var score = 0;
+
+        var canvas;
+
+        var isGameOver = false;
+
+        window.onload=function(){
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+
+            // 그리기 함수 호출
+            // 0.5초에 한번씩 그리기
+            window.setInterval(drawScreen,10);
+            window.setInterval(makeEnemy,500);
+
+            // 게임이 중지된 상태에서
+            var body = document.body;
+            body.onkeydown = resetGame;
+
+            // 마우스를 움직일때 마다 함수를 호출
+            // 내 비행기 이동 함수
+            canvas.onmousemove = moveShip;
+
+            // 마우스를 클릭하면 함수를 호출
+            // 미사일 발사
+            canvas.onmousedown = fireMissile;
+
+
+
+        }
+
+        function resetGame(e){
+            // console.log("RESET 함수 호출중");
+            // console.log(e.keyCode); // 키보드를 누르면 ascii 코드를 출력
+
+            // x키를 누르면 게임 진행 상태로 변경
+            if(isGameOver){
+                if(e.keyCode == 88) {
+                    isGameOver = false;
+                    canvas.onmousemove = moveShip;
+                    canvas.onmousedown = fireMissile;
+                    shipX = 250;
+                    shipY = 500;
+                    score = 0;
+                    // 적비행기 초기화
+                    for(var i = 0; enemyArray.length; i++) {
+                        enemyArray[i].y = 1001
+                    }
+                }
+            }
+
+        }
+
+        function drawScreen(){
+            counter++;
+            // console.log(counter);
+
+            // 배경
+            bgY1+=3;
+            bgY2+=3;
+            
+            // enemyShipY+=3;
+
+            if(bgY1 >= 800) {
+                bgY1 = -800;
+            }
+            if(bgY2 >= 800) {
+                bgY2 = -800;
+            }
+            
+            ctx.drawImage(bg1, 0, bgY1, 600, 800);
+            ctx.drawImage(bg2, 0, bgY2, 600, 800);
+
+            
+            // 내 비행기 그리기
+            if(counter % 4 == 0){
+                ctx.drawImage(ship1, shipX, shipY, 50, 50);
+            }else if(counter % 4 == 1){
+                ctx.drawImage(ship2, shipX, shipY, 50, 50);
+            }else if(counter % 4 == 2){
+                ctx.drawImage(ship3, shipX, shipY, 50, 50);
+            }else if(counter % 4 == 3){
+                ctx.drawImage(ship4, shipX, shipY, 50, 50);
+            }
+            
+            // 적 비행기 배열에서 한개씩 꺼내서 그리기
+            // 타입에 따라 다른 비행기를 그리기
+            for(var i = 0; i < enemyArray.length; i++) {
+
+                if(enemyArray[i].type == 1) {
+                    if(counter % 4 == 0){
+                        ctx.drawImage(enemyShip1, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }else if(counter % 4 == 1){
+                        ctx.drawImage(enemyShip2, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }else if(counter % 4 == 2){
+                        ctx.drawImage(enemyShip3, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }else if(counter % 4 == 3){
+                        ctx.drawImage(enemyShip4, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }
+                }else if(enemyArray[i].type == 2){
+                    if(counter % 4 == 0){
+                        ctx.drawImage(enemyShip11, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }else if(counter % 4 == 1){
+                        ctx.drawImage(enemyShip12, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }else if(counter % 4 == 2){
+                        ctx.drawImage(enemyShip13, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }else if(counter % 4 == 3){
+                        ctx.drawImage(enemyShip14, enemyArray[i].x, enemyArray[i].y, 50, 50);
+                    }
+                }else if(enemyArray[i].type == 3){
+                    if(counter % 4 == 0){
+                        ctx.drawImage(enemyShip21, enemyArray[i].x, enemyArray[i].y, 100, 100);
+                    }else if(counter % 4 == 1){
+                        ctx.drawImage(enemyShip22, enemyArray[i].x, enemyArray[i].y, 100, 100);
+                    }else if(counter % 4 == 2){
+                        ctx.drawImage(enemyShip23, enemyArray[i].x, enemyArray[i].y, 100, 100);
+                    }else if(counter % 4 == 3){
+                        ctx.drawImage(enemyShip24, enemyArray[i].x, enemyArray[i].y, 100, 100);
+                    }
+                }
+            
+                enemyArray[i].y+=3;
+
+                // 적 비행기가 화면 밖으로 나가면 제거
+                if(enemyArray[i].y >= 1000) {
+                    enemyArray.shift();
+                    // console.log("삭제");
+                }
+            }
+            // 적 비행기 그리기
+            
+            // 미사일 배열에서 한개씩 꺼내서 그리기
+            for(var i = 0; i < missileArray.length; i++) {
+                ctx.drawImage(missile, missileArray[i].x, missileArray[i].y, 5, 20);
+
+                // 미사일 배열에서 각 미사일을 꺼내 Y값을 감소 시킨다.
+                missileArray[i].y-=3;
+
+                // 미사일이 화면 밖을 나가면 미사일을 제거
+                // shift(): 배열 맨 앞의 값을 삭제
+                // unshift(): 배열 맨 앞에 값 추가
+                // push(): 배열 맨 마지막에 추가
+                // pop(): 배열 맨 마지막 꺼내기
+                if(missileArray[i].y < 0){
+                    missileArray.shift();
+                    // console.log("삭제");
+                }
+
+            }
+
+            checkCollision(); //격추했는지 판정
+            checkShipCollision(); // 내 비행기와 적비행기가 충돌했는지 검사
+
+
+            //점수판 그리기
+            ctx.fillStyle = "blue"
+            ctx.font = "35px 고딕";
+            ctx.fillText("SCORE : " + score, 200, 50);
+
+            //게임 오버 점수판
+            if (isGameOver) {
+                ctx.font = "90px 고딕";
+                ctx.fillText("GAME OVER", 50, 300);
+
+                ctx.font = "30px 고딕";
+                ctx.fillText("Please Insert Coin", 150, 400);
+            }
+
+
+        }
+
+        function checkShipCollision() {
+            // 적 비행기와 내 비행기가 충돌했는지 판정
+
+            // 1. 적 비행기 배열에서 비행기 한대를 꺼내기
+            for (var i = 0; i < enemyArray.length; i++) {
+                var e = enemyArray[i];
+
+                // 2. 적비행기와 내 비행기의 거리를 계산
+                var dis = pythagoras(shipX, shipY, e.x, e.y);
+
+                // 3. 만약 가깝다면 GAMEOVER : 메세지를 콘솔에 출력
+                if (dis < 40) {
+                    gameOver();
+                }
+            }
+        }
+
+        function gameOver() {
+            // console.log("GAME OVER");
+            //마우스 움직임 없게 또 클릭이 안되게
+            canvas.onmousemove = '';
+            canvas.onmousedown = '';
+
+            //게임 끝 변수
+            isGameOver = true;
+        }
+
+
+        function moveShip(e){
+            // console.dir(e);
+            shipX = e.pageX-25;
+            shipY = e.pageY-25;
+        }
+
+        function fireMissile(e){
+            fireSound.currentTime=0;
+            fireSound.volume=0.01;
+            fireSound.play();
+
+            // 미사일 객체
+            var temp = {
+                x : e.pageX,
+                y : e.pageY
+            };
+
+            missileArray.push(temp);
+        }
+        
+        
+        // 브금 함수
+        function startBGMOn() {
+            bgm.currentTime=0;
+            bgm.volume=0.02;
+            bgm.play();
+        }
+
+        function stopBGMOff() {
+            bgm.pause();
+        }
+
+
+
+        function makeEnemy(){
+            // 적 비행기를 랜덤위치에 생성
+            var pos = Math.floor(Math.random()*550);
+
+            // 적 비행기의 타입을 랜덤으로 생성
+            // 1. 일반 적 비행기
+            // 2. 노랑 적 비행기 (체력이 높음)
+            // 3. 파랑 적 비행기 (체력이 조금 더 많음) 2배 크기로 생성
+            var t = Math.floor(Math.random()*3)+1;
+
+            // 적 비행기 객체
+            var enemy = {
+                x : pos,
+                y : 50,
+                type : t,
+                hp : t*100
+            };
+
+
+            enemyArray.push(enemy);
+        }
+
+        function pythagoras(x1, y1, x2, y2){
+            return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+        }
+
+        function checkCollision() {
+            // console.log("충돌체크");
+
+            for(var i = 0; i < enemyArray.length; i++){
+                // 1. 적 비행기 배열에서 적 비행기 한대 꺼내기
+                var e = enemyArray[i];
+                // 2. 미사일 배열에서 미사일 1개 꺼내기
+                for(var j = 0; j < missileArray.length; j++){
+                    var m = missileArray[j];
+                    // 3. 둘 사이의 거리를 측정해서 가까우면 폭발
+                    var dis = pythagoras(m.x, m.y, e.x, e.y);
+
+                    // 맞았다면 메세지를 출력
+                    if(dis < 40) {
+                        e.y -= 50;
+                        m.y = -10;
+                        e.hp -= 100;
+
+                        if(e.hp <= 0){
+                            e.x += 1000;
+                            score += e.type*100;
+                        }
+
+                    // 적 비행기를 격추 시키면 100점
+                    // 화면에 SCORE: 출력
+                    }
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="800"></canvas>
+    <!-- 배경음악 on off 버튼 -->
+    <!-- 미사일 발사시 발사음악: fire2.wav -->
+    <br>
+    <input type="button" value="배경음악ON" onclick="startBGMOn();">
+    <input type="button" value="배경음악OFF" onclick="stopBGMOff();">
+
+
+
+</body>
+</html>
