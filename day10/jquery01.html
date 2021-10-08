@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script>
+        function test() {
+            // id가 box1인 엘리먼트 가져오기
+
+        }
+
+        // 윈도우창에 객체가 메모리에 로딩이 된 후에 실행
+        // 현재 페이지가 로딩 된 후에 함수를 호출해
+        // window.onload=test(); test()를 실행하고 리턴되는 값을 할당
+        // window.onload=test; // 로딩이 끝난다음 함수 호출
+
+        // window.onload=익명함수;
+        // window.onload=function(){
+        //     var box1 = document.getElementById("box1");
+        //     console.log(box1);
+        // };
+
+        // html의 구조만 먼저 로딩후 실행
+        // jQuery 익명함수
+        // $(document).ready(익명함수);
+        $(document).ready(function(){
+            var box1 = document.getElementById("box1");
+            console.log(box1);
+            // box1의 배경색을 blue로 지정
+            box1.style.backgroundColor="blue";
+            // 글자색을 red로
+            box1.style.color="red";
+            console.log("------------------------------");
+
+            // CSS
+            // $("선택자")
+            var jBox = $("#box2");
+            console.log(jBox); // id:box1인 엘리먼트객체를 jquery함수로 감싼 객체
+
+            // box2의 배경색을 blue로 지정
+            // $("선택자").함수(매개변수)
+            // $("#box2").css("속성", "값");
+            $("#box2").css("background", "blue");
+            $("#box2").css("color", "red");
+
+            // id가 box3인 엘리먼트의 배경색을 노랑색 글짜를 초록색으로 변경
+            var box3 = document.getElementById("box3");
+            box3.style.backgroundColor="yellow"
+            box3.style.color="green";
+            
+            // 같은 기능을 id box4에 jquery를 사용해서 완성
+            // jquery 모든 함수는 실행후 자기자신의 객체를 리턴하도록 설계
+            // 메서드 체이닝
+            $("#box4").css("background", "yellow").css("color", "green");
+        });
+
+
+    </script>
+</head>
+<body>
+    <p>Hello jQuery</p>
+
+    <div id="box1">이부분은 id가 box1입니다</div>
+    <div id="box2">이부분은 id가 box2입니다</div>
+    <div id="box3">이부분은 id가 box3입니다</div>
+    <div id="box4">이부분은 id가 box4입니다</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+
+
+
+            $("input[id=btn]").on("click", function(){
+                for(var i = 1; i <= 9; i++){
+                console.log($("input[id=txt]").val() + " * " + 
+                i + " = " + parseInt($("input[id=txt]").val()) * i); 
+                }
+            }); 
+
+        })
+
+    </script>
+</head>
+<body>
+    
+</body>
+    <input type="text" name="" id="txt">
+    <input type="button" value="단출력" id="btn">
+    <div id="div1"></div>
+</html>

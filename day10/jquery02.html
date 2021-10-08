@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src ="../js/jquery-3.6.0.js"> </script>
+    <script>
+        // $(document).ready(function(){
+        //     $("#div2").css("backgroundColor","blue").css("width", "150px").css("height", "150px");
+
+        //     $("#container").css("backgroundColor", "blue").css("width", "300px").css("height", "300px");
+        // });
+
+        // 위에 코드를 더 줄여서 할 수 있다.
+        $(function(){
+            $("#div2").css("backgroundColor","blue").css("width", "150px").css("height", "150px");
+            // $("#container").css("backgroundColor", "blue").css("width", "300px").css("height", "300px");
+
+            // JSON타입 선언
+            $("#container").css({
+                "backgroundColor": "pink",
+                "width": "300px",
+                "height": "300px"
+            });
+            
+            //id가 div2인 엘리먼트에서 width속성의 값 가져오기
+            console.log($("#div2").css("width"));
+        });
+
+    </script>
+</head>
+<body>
+    <!-- 배경은 블루 너비 150px 높이 150px -->
+    <div id="div2"></div>
+    
+    <!-- 배경은 핑크 너비 300px 높이 300px -->
+    <div id="container"></div>
+
+</body>
+</html>

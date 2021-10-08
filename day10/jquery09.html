@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+
+            // jQuery
+            // $("#btn4").on("click", function(){
+            //     $("#answer").css("display", "block");
+            // });
+            // $("#btn1").on("click", function(){
+            //     $("#wrong").css("display", "block");
+            // });
+            // $("#btn2").on("click", function(){
+            //     $("#wrong").css("display", "block");
+            // });
+            // $("#btn3").on("click", function(){
+            //     $("#wrong").css("display", "block");
+            // });
+
+            $("#btn4").on("click", function(){
+                $("#answer").show();
+                $("#wrong").hide();
+            });
+            
+            // $("#btn1, #btn2, #btn3").on("click", function(){
+            //     $("#wrong").show();
+            //     $("#answer").hide();
+            // });
+
+            $("input[id!='btn4']").on("click", function(){
+                $("#wrong").show();
+                $("#answer").hide();
+            });
+        })
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <input type="button" value="1번" id="btn1">
+    <input type="button" value="2번" id="btn2">
+    <input type="button" value="3번" id="btn3">
+    <input type="button" value="4번" id="btn4">
+
+    <div>조선 시대 장군, 명량, 거북선 하면 떠오르는 인물은?</div>
+
+    <div id="bb">
+        1. 권율     2.김두한    3.유관순    4.이순신
+    </div>
+    
+    <div id="answer" style="display: none;">
+        <p>정답: 4.이순신</p>
+    </div>
+
+    <div id="wrong" style="display: none;">
+        <img src="../images/wrong.jpg" alt="떙">
+    </div>
+</body>
+</html>

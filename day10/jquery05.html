@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // window.onload=function(){
+        //     var btn = document.getElementById("btn");
+        //     btn.onclick = prt;
+        // }
+
+        // <!-- id:txt 엘리먼트의 값을 콘솔에 출력 -->
+        function prt() {
+            console.log("하하");
+        }
+
+        $(function(){
+            // $("#btn").on("click",함수명);
+            // $("#btn").on("click",prt);
+            $("#btn").on("click",function(){
+                // 자바스크립트
+                console.log(document.getElementById("txt").value);
+
+                // jQuery
+                console.log($("#txt").val());
+
+                // id가 div1인 엘리먼트에 메세지 출력
+                var div1 = document.getElementById("div1");
+                div1.innerText="한글날";
+                div1.innerHTML="<h1>한글날</h1>";
+
+                console.log("--------------------------");
+
+                $("#div1").text("한글날");
+                $("#div1").html("<h1>한글날</h1>");
+
+                // 화면에 내가 입력한 값을 <h2>태그로 출력
+
+                // javascript
+                var txt = document.getElementById("txt");
+                div1.innerHTML = "<h2>"+ txt.value +"</h2>";
+
+                // jQuery
+                $("#div1").html("<h2>"+ $("#txt").val() +"</h2>");
+
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <!-- 버튼을 누르면 콘솔에 간단한 메세지 출력하게 하기(함수명: prt()) -->
+    <input type="text" name="" id="txt">
+    <input type="button" value="출력" id="btn">
+    <div id="div1"></div>
+
+
+</body>
+</html>

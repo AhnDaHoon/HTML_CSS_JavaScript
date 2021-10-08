@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box1{
+            background: red;
+            width: 300px;
+            height: 300px;
+        }
+
+    </style>
+    <script src="../js/jquery-3.6.0.js"></script>
+
+    <script>
+
+        // 엘리먼트 형식
+        // function randomSize(){
+        //     box1.style.width=Math.floor(Math.random()*300)+"px";
+        //     box1.style.height=Math.floor(Math.random()*300)+"px";
+        // }
+
+        // jQuery형식
+        function randomSize(){
+            $("#box1").css({
+                "width": Math.floor(Math.random()*300)+"px",
+                "height": Math.floor(Math.random()*300)+"px"
+            });
+        }
+
+
+        $(function(){
+
+        });
+
+    </script>
+</head>
+<body>
+
+    <div id="box1">
+
+    </div>
+
+    <input type="button" value="랜덤사이즈" onclick="randomSize()">
+</body>
+</html>

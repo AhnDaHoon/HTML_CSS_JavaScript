@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            background: gray;
+            width: 800px;
+            height: 500px;
+        }
+
+        #menu1{
+            margin-top: 20px;
+            margin-left: 200px;
+            padding: 10px;
+            width: 400px;
+            position: absolute;
+            text-align: center;
+        }
+
+        img{
+            margin-top: 90px;
+            margin-left: 40px;
+            padding: 50px;
+        }
+
+        #ra1{
+            margin-left: 100px;
+        }
+        #ra2{
+            margin-left: 130px;
+        }
+        #ra3{
+            margin-left: 140px;
+        }
+        #ra4{
+            margin-left: 140px;
+        }
+
+
+        #menu2{
+            margin-top: 180px;
+            margin-left: 200px;
+            padding: 10px;
+            width: 400px;
+            text-align: center;
+            
+
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#ra1").on("click",function(){
+                $("#menu2").val("선택하신 메뉴는 1번입니다.");
+            });
+            $("#ra2").on("click",function(){
+                $("#menu2").val("선택하신 메뉴는 2번입니다.");
+            });
+            $("#ra3").on("click",function(){
+                $("#menu2").val("선택하신 메뉴는 3번입니다.");
+            });
+            $("#ra4").on("click",function(){
+                $("#menu2").val("선택하신 메뉴는 4번입니다.");
+            });
+        })
+
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" name="" id="menu1" value="오늘의 점심메뉴">
+
+        <img src="../images/ball1.png" alt="">
+        <img src="../images/ball2.png" alt="">
+        <img src="../images/ball3.png" alt="">
+        <img src="../images/ball4.png" alt="">
+
+        <input type="radio" name="choice" id="ra1" class="ra">1번
+        <input type="radio" name="choice" id="ra2" class="ra">2번
+        <input type="radio" name="choice" id="ra3" class="ra">3번
+        <input type="radio" name="choice" id="ra4" class="ra">4번
+
+        <input type="text" name="" id="menu2">
+    </div>
+    
+</body>
+</html>
