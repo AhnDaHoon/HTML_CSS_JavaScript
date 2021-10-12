@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* :nth-child()i: n번째 자손 : 특정 순서에 있는 요소 선택시 사용 */
+        /* :nth-child()i: 앞에서 부터 카운트 */
+        /* :nth-last-child()i: 뒤에서 부터 카운트 */
+
+        td:nth-child(2){
+            background: burlywood;
+        }
+
+        .test:nth-child(2){
+            color : coral;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#btn").on("click", function(){
+                $("tr").addClass("test");
+            })
+            
+        })
+        </script>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+
+    <input type="button" value="2번째행에 test 클래스 부여하기" id="btn">
+</body>
+</html>

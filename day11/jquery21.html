@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(function(){
+            $("#btn1").on("click", function(){
+                $("img").hide();
+            });
+
+            $("#btn2").on("click", function(){
+                $("img").show();
+            });
+
+            $("#btn3").on("click", function(){
+                $("img").toggle();
+            });
+
+            $("#btn4").on("click", function(){
+                $("img").fadeIn(800);
+            });
+
+            $("#btn5").on("click", function(){
+                $("img").fadeOut({
+                    // duration 시간
+                    duration:3000,
+                    // complete 성공한다면 조건
+                    complete: function(){
+                        alert("뿅~~~");
+                    }
+                });
+            });
+
+            // 6번버튼을 누르면 Hello World" 출력
+            $("#btn6").on("click", function(){
+                $("#p1").text("Hello World")
+                        .css("background", "blue")
+                        .addClass("txt")
+                        // wrapper 클래스 뒤에 자식으로 추가
+                        .appendTo(".wrapper");
+            });
+
+            // 7번 버튼 클릭하면 오른쪽으로 이동
+            // 3초후 페이드 아웃
+            // 구글사이트로 이동
+            $("#btn7").on("click", function(){
+                $("img").css("marginLeft", 10+"px")
+                        .fadeOut(3000, function(){
+                            var newt = window.open("about:blank")
+                            newt.location.href="https://www.google.co.kr/"
+                        });
+                        
+
+            });
+        })
+
+    </script>
+</head>
+<body>
+    <input type="button" value="숨기기" id="btn1">
+    <input type="button" value="나타나기" id="btn2">
+    <input type="button" value="토글" id="btn3">
+    <input type="button" value="FadeIn" id="btn4">
+    <input type="button" value="FadeOut" id="btn5">
+    <input type="button" value="메세지출력" id="btn6">   
+    <input type="button" value="토끼이동후 사이트 전환" id="btn7">   
+
+    <br>
+    <div class="wrapper"></div> 
+
+    <div>
+        <img src="../images/rabbit1.png" alt="">
+    </div>
+
+    <p id="p1"></p>
+</body>
+</html>
+

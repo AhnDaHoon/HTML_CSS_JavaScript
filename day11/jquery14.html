@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table{
+            table-layout: auto;
+            width: 75%;
+        }
+
+        td{
+            color: blue;
+            font-weight: bold;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            // 첫번째 버튼을 누르면 0번째행의 배경색을 pink
+            $("#btn1").on("click", function(){
+                $("tr:eq(0)").css("background-color", "pink");
+            });
+
+            // 두번째 버튼을 누르면 0, 1, 2번쨰 3개의 행의 배경을 red
+            $("#btn2").on("click", function(){
+                // lt(3) 3보다 작다
+                $("tr:lt(3)").css("background-color", "red");
+            });
+
+            // 세번째 버튼을 누르면 3, 4의행 배경을 green
+            $("#btn3").on("click", function(){
+                // gt(2) 2보다 크다 
+                $("tr:gt(2)").css("background", "green");
+            })
+        })
+        
+    </script>
+</head>
+<body>
+    <input type="button" value="버튼1" id="btn1">
+    <input type="button" value="버튼2" id="btn2">
+    <input type="button" value="버튼3" id="btn3">
+    <input type="button" value="버튼4" id="btn4">
+
+    <table>
+        <tr class="testClass">
+            <td>one</td>
+        </tr>
+        <tr class="testClass">
+            <td>two</td>
+        </tr>
+        <tr class="testClass">
+            <td>three</td>
+        </tr>
+        <tr class="testClass">
+            <td>four</td>
+        </tr>
+        <tr class="testClass">
+            <td>five</td>
+        </tr>
+    </table>
+</body>
+</html>

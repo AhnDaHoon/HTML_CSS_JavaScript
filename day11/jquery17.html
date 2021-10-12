@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var index = 0;
+
+        var timer;
+
+        var news = [
+            "1.오피스텔 왜 안줘···아버지 때려죽인 패륜 40대 중형",
+            "2.셀트리온, 항암제 아바스틴 바이오시밀러 유럽 허가 신청",
+            "3.오늘부터 부스터샷 시작…1차 접종 4000만명 돌파",
+            "4.카카오벤처스, 美 상업용 부동산 분석 기업 '마켓스타디움'에 투자",
+            "5.내달 1일 통신사투자사로 쪼갠KT, 임시주총서 '분할' 의결"
+        ];
+        // 뉴스보기 함수
+        function showNews(){
+            // topNews 엘리먼트 가져오기
+            // console.dir($("#topNews"));
+            // console.dir($("#topNews")[index]);
+            $("#topNews")[0].innerHTML="<h2>"+news[index++]+"</h2>"
+            // console.log(index);
+            if(index == news.length){
+                index = 0;
+            }
+        };
+
+        function startNews(){
+            timer = window.setInterval(showNews,1000);
+            // console.log(timer);
+        }
+
+        function stopNews(){
+            window.clearInterval(timer);
+        }
+
+        $(function(){
+            $("input[value=뉴스보기]").on("click", startNews);
+        })
+
+        $(function(){
+            $("input[value=뉴스중지]").on("click", stopNews);
+        })
+
+    </script>
+</head>
+<body>
+    <div id="topNews"></div>
+    <input type="button" value="뉴스보기">
+    <input type="button" value="뉴스중지">
+    
+</body>
+</html>
